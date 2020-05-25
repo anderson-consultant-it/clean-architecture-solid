@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/anderson-consultant-it/clean-architecture-solid/issues"
   },
-  "homepage": "https://github.com/anderson-consultant-it/clean-architecture-solid#readme"
+  "homepage": "https://github.com/anderson-consultant-it/clean-architecture-solid#readme",
+  "devDependencies": {
+    "git-commit-msg-linter": "^2.4.2"
+  }
 }
