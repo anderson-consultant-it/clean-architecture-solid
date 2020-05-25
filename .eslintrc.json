@@ -5,7 +5,7 @@
     "jest": true
   },
   "extends": [
-    "standard-wtih-typescript",
+    "airbnb-base",
     "plugin:@typescript-eslint/recommended",
     "prettier/@typescript-eslint",
     "plugin:prettier/recommended"
