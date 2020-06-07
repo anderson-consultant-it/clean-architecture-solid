@@ -7,9 +7,13 @@ import {
   IEmailValidator,
 } from '../protocols';
 import { badRequest, serverError } from '../helpers/http-helper';
+import { IAddAccount } from '../../domain/usecases/add-account';
 
 export default class SignUpController implements IController {
-  constructor(private readonly emailValidator: IEmailValidator) {}
+  constructor(
+    private readonly emailValidator: IEmailValidator,
+    private addAccount: IAddAccount,
+  ) {}
 
   handle(httpRequest: IHttpRequest): IHttpResponse {
     try {
@@ -21,7 +25,7 @@ export default class SignUpController implements IController {
         }
       }
 
-      const { email, password, passwordConfirm } = httpRequest.body;
+      const { name, email, password, passwordConfirm } = httpRequest.body;
 
       if (password !== passwordConfirm) {
         return badRequest(new InvalidParamError('passwordConfirm'));
@@ -32,6 +36,8 @@ export default class SignUpController implements IController {
       if (!isValid) {
         return badRequest(new InvalidParamError('email'));
       }
+
+      this.addAccount.add({ name, email, password });
 
       return { statusCode: 200 };
     } catch (error) {
