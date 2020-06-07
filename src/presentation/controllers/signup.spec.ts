@@ -89,6 +89,22 @@ describe('SignUp Controller', () => {
     expect(httpResponse.body).toEqual(new MissingParamError('passwordConfirm'));
   });
 
+  test('Should return 400 if password confirmation fails', () => {
+    const { sut } = makeSut();
+    const httpRequest = {
+      body: {
+        name: 'name',
+        email: 'any@email.com',
+        password: 'password',
+        passwordConfirm: 'password2',
+      },
+    };
+    const httpResponse = sut.handle(httpRequest);
+
+    expect(httpResponse.statusCode).toBe(400);
+    expect(httpResponse.body).toEqual(new InvalidParamError('passwordConfirm'));
+  });
+
   test('Should return 400 if an invalid email is provided', () => {
     const { sut, emailValidatorStub } = makeSut();
 
