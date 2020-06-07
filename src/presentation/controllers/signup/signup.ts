@@ -1,13 +1,13 @@
-import { MissingParamError, InvalidParamError } from '../errors';
+import { MissingParamError, InvalidParamError } from '../../errors';
 
 import {
   IHttpRequest,
   IHttpResponse,
   IController,
   IEmailValidator,
-} from '../protocols';
-import { badRequest, serverError } from '../helpers/http-helper';
-import { IAddAccount } from '../../domain/usecases/add-account';
+  IAddAccount,
+} from './signup-protocols';
+import { badRequest, serverError } from '../../helpers/http-helper';
 
 export default class SignUpController implements IController {
   constructor(
