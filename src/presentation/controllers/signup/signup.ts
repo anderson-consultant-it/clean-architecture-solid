@@ -7,7 +7,7 @@ import {
   IEmailValidator,
   IAddAccount,
 } from './signup-protocols';
-import { badRequest, serverError } from '../../helpers/http-helper';
+import { badRequest, serverError, ok } from '../../helpers/http-helper';
 
 export default class SignUpController implements IController {
   constructor(
@@ -39,7 +39,7 @@ export default class SignUpController implements IController {
 
       const account = this.addAccount.add({ name, email, password });
 
-      return { statusCode: 200, body: account };
+      return ok(account);
 
       return { statusCode: 200 };
     } catch (error) {
