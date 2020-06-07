@@ -22,6 +22,7 @@
   "rules": {
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
+    "import/prefer-default-export": "off",
     "class-methods-use-this":"off",
     "@typescript-eslint/camelcase":"off",
     "no-useless-constructor": "off",
