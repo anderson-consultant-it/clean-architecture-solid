@@ -21,6 +21,10 @@ export default class SignUpController implements IController {
         }
       }
 
+      if (httpRequest.body.password !== httpRequest.body.passwordConfirm) {
+        return badRequest(new InvalidParamError('passwordConfirm'));
+      }
+
       const isValid = this.emailValidator.isValid(httpRequest.body.email);
 
       if (!isValid) {
