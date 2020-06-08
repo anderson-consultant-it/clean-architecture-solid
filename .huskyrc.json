@@ -1,5 +1,6 @@
 {
   "hooks":{
-    "pre-commit": "eslint"
+    "pre-commit": "lint-stage",
+    "pre-push": "yarn test:ci"
   }
 }
